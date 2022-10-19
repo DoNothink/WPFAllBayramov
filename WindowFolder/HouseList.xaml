@@ -1,0 +1,89 @@
+﻿<Window x:Class="WPFAllBayramov.WindowFolder.HouseList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAllBayramov.WindowFolder"
+        mc:Ignorable="d"
+        Title="Список домов"
+        Height="600" Width="1000"
+        MinHeight="600" MinWidth="1000"
+        MaxHeight="600" MaxWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <!--logo-->
+        <Image x:Name="LogoImg"
+                Grid.Row="0" Grid.RowSpan="2"
+               Grid.Column="0" Grid.ColumnSpan="2"
+               Style="{DynamicResource ImageLogoStyle}"/>
+        <!--Menu-->
+        <Menu Grid.Row="3" Grid.Column="1">
+            <MenuItem x:Name="ExitMI" Header="Выйти"
+                      Height="50" Width="75"
+                      Click="ExitMI_Click"/>
+            <MenuItem x:Name="AddMI" Header="Добавить"
+                      Height="50" Width="75"
+                      Click="AddMI_Click"/>
+        </Menu>
+        <!--SearchTb-->
+        <TextBox x:Name="SearchTB"
+                 Grid.Row="3" Grid.Column="7"
+                 TextChanged="SearchTB_TextChanged"/>
+        <!--Label-->
+        <Label Content="Поиск"
+            Grid.Row="3" Grid.Column="5"
+               Style="{DynamicResource LabelNormalStyle}"/>
+        <!--DataGrid-->
+        <DataGrid x:Name="ListHousingDG"
+                  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="7"
+                  AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="RedactMI" Header="Редактировать"
+                              Click="RedactMI_Click"/>
+                    <MenuItem x:Name="DeleteMI" Header="Удалить"
+                              Click="DeleteMI_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ЖК"
+                                    Binding="{Binding Name_Housing_Complex}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Улица"
+                                    Binding="{Binding Street}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Номер дома"
+                                    Binding="{Binding Number_House}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Статус"
+                                    Binding="{Binding Status_Construction_Housing_Complex}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Статус продажи"
+                                    Binding="{Binding Status_Sale}"
+                                    Width="250"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
