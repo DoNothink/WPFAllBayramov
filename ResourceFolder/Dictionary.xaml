@@ -19,11 +19,50 @@
     </Style>
     <Style TargetType="TextBox">
         <Setter Property="Margin" Value="16"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Tw Cen MT"/>
+        <Setter Property="BorderBrush" Value="#FFFF9C1A"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Height" Value="36"/>
     </Style>
     <Style TargetType="ComboBox">
         <Setter Property="Margin" Value="16"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Tw Cen MT"/>
+        <Setter Property="BorderBrush" Value="#FFFF9C1A"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Height" Value="36"/>
     </Style>
     <Style TargetType="Button">
         <Setter Property="Margin" Value="16"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Tw Cen MT"/>
+        <Setter Property="BorderBrush" Value="#FFFF9C1A"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+    </Style>
+    <Style TargetType="Menu">
+        <Setter Property="Margin" Value="16"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Tw Cen MT"/>
+        <Setter Property="BorderBrush" Value="#FFFF9C1A"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Height" Value="36"/>
+    </Style>
+    <Style TargetType="MenuItem">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Tw cen MT"/>
+        <Setter Property="Margin" Value="1"/>
+    </Style>
+    <Style TargetType="DataGrid">
+        <Setter Property="Margin" Value="16"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Tw Cen MT"/>
+
+        <Setter Property="Background" Value="{x:Null}"/>
     </Style>
 </ResourceDictionary>

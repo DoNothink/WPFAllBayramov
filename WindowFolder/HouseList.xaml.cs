@@ -61,17 +61,6 @@ namespace WPFAllBayramov.WindowFolder
                 MBClass.ErrorMB(ex.Message);
             }
         }
-
-        private void ExitMI_Click(object sender, RoutedEventArgs e)
-        {
-            MBClass.ExitMB();
-        }
-
-        private void AddMI_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
             dgClass.LoadDG("Select Name_Housing_Complex," +
@@ -84,6 +73,24 @@ namespace WPFAllBayramov.WindowFolder
                 $"WHERE Name_Housing_Complex Like '%{SearchTB.Text}%' " +
                 $"OR Street Like '%{SearchTB.Text}%' " +
                 $"OR Number_House Like '%{SearchTB.Text}%'");
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MBClass.ExitMB();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                new AddHouseWindow().Show();
+            }
+            catch (Exception ex)
+            {
+
+                MBClass.ErrorMB(ex.Message);
+            }
         }
     }
 }

@@ -61,6 +61,9 @@
     </Compile>
     <Compile Include="ClassFolder\CBClass.cs" />
     <Compile Include="ClassFolder\VariableClass.cs" />
+    <Compile Include="WindowFolder\AddHouseWindow.xaml.cs">
+      <DependentUpon>AddHouseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\EditHouseWindow.xaml.cs">
       <DependentUpon>EditHouseWindow.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ResourceFolder\Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\AddHouseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,7 +27,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="10"/>
             <RowDefinition/>
             <RowDefinition Height="10"/>
@@ -38,15 +38,13 @@
                 Grid.Row="0" Grid.RowSpan="2"
                Grid.Column="0" Grid.ColumnSpan="2"
                Style="{DynamicResource ImageLogoStyle}"/>
-        <!--Menu-->
-        <Menu Grid.Row="3" Grid.Column="1">
-            <MenuItem x:Name="ExitMI" Header="Выйти"
-                      Height="50" Width="75"
-                      Click="ExitMI_Click"/>
-            <MenuItem x:Name="AddMI" Header="Добавить"
-                      Height="50" Width="75"
-                      Click="AddMI_Click"/>
-        </Menu>
+        <!--Button's-->
+        <Button x:Name="ExitBtn" Content="Выйти"
+                Grid.Row="3" Grid.Column="1"
+                Click="ExitBtn_Click"/>
+        <Button x:Name="AddBtn" Content="Добавить"
+                Grid.Row="3" Grid.Column="3"
+                Click="AddBtn_Click"/>
         <!--SearchTb-->
         <TextBox x:Name="SearchTB"
                  Grid.Row="3" Grid.Column="7"

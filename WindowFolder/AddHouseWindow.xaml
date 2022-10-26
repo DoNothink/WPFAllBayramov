@@ -1,16 +1,15 @@
-﻿<Window x:Class="WPFAllBayramov.WindowFolder.EditHouseWindow"
+﻿<Window x:Class="WPFAllBayramov.WindowFolder.AddHouseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAllBayramov.WindowFolder"
         mc:Ignorable="d"
-        Title="Редактирование"
+        Title="Добавление"
         Height="600" Width="450"
         MinHeight="600" MinWidth="450"
         MaxHeight="600" MaxWidth="450"
-        WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -41,7 +40,7 @@
         <Image Grid.Row="1" Grid.Column="1"
                Style="{DynamicResource ImageLogoStyle}"/>
         <Label Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"
-               Content="Редактировать"
+               Content="Добавить"
                Style="{DynamicResource LabelLogoStyle}"/>
         <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                Content="ЖК"
@@ -58,21 +57,18 @@
         <Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2"
                Content="Статус продажи"
                Style="{DynamicResource LabelNormalStyle}"/>
-               
+
+        <TextBox x:Name="HouseComplexTB"
+            Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"/>
         <TextBox x:Name="StreetTB"
             Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
         <TextBox x:Name="NumberHouseTB"
             Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3"/>
 
-        <ComboBox x:Name="HouseComplexCB"
-                  Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"/>
-        <ComboBox x:Name="StatusConstrCB"
-                  Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="3"/>
-        <ComboBox x:Name="StatusSaleCB"
-                  Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="StatusConstrCB" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="StatusSaleCB" Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="3"/>
 
-        <Button x:Name="RedactBtn" Content="Редактировать"
-                Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="5"
-                Click="RedactBtn_Click"/>
+        <Button x:Name="RedactBtn" Content="Добавить"
+                Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>
