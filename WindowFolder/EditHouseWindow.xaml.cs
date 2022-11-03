@@ -35,9 +35,11 @@ namespace WPFAllBayramov.WindowFolder
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cBClass.StatusSaleCBLoad(StatusSaleCB);
-            cBClass.StatusCunstructionCBLoad(StatusConstrCB);
-            cBClass.HousingComplexCBLoad(HouseComplexCB);
+            cBClass.CBLoading(StatusSaleCB,CBClass.CBchoose.StatusSale);
+            cBClass.CBLoading(StatusConstrCB,CBClass.CBchoose.StatusCunstruction);
+            cBClass.CBLoading(HouseComplexCB, CBClass.CBchoose.HousingComplex);
+            cBClass.CBLoading(StreetCB,CBClass.CBchoose.Street);
+            cBClass.CBLoading(NumberHouseCB,CBClass.CBchoose.NumberHouse);
         }
 
         private void RedactBtn_Click(object sender, RoutedEventArgs e)

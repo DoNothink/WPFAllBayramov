@@ -59,11 +59,10 @@
                Content="Статус продажи"
                Style="{DynamicResource LabelNormalStyle}"/>
                
-        <TextBox x:Name="StreetTB"
-            Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="NumberHouseTB"
-            Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3"/>
-
+        <ComboBox x:Name="NumberHouseCB"
+                  Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <ComboBox x:Name="StreetCB"
+                  Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
         <ComboBox x:Name="HouseComplexCB"
                   Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"/>
         <ComboBox x:Name="StatusConstrCB"
