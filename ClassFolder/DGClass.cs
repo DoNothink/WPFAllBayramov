@@ -12,9 +12,7 @@ namespace WPFAllBayramov.ClassFolder
 {
     class DGClass
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=K218PC\SQLEXPRESS;
-                        Initial Catalog=HousingDemoLightBayramov;
-                        Integrated Security=True");
+        SqlConnection sqlConnection = new SqlConnection(GlobalClass.sqlConnection);
         SqlDataAdapter dataAdapter;
         DataGrid dataGrid;
         DataTable dataTable;

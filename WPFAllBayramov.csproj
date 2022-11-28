@@ -60,6 +60,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ClassFolder\CBClass.cs" />
+    <Compile Include="ClassFolder\GlobalClass.cs" />
     <Compile Include="ClassFolder\VariableClass.cs" />
     <Compile Include="WindowFolder\AddHouseWindow.xaml.cs">
       <DependentUpon>AddHouseWindow.xaml</DependentUpon>

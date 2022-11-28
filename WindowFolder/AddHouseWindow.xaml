@@ -6,19 +6,23 @@
         xmlns:local="clr-namespace:WPFAllBayramov.WindowFolder"
         mc:Ignorable="d"
         Title="Добавление"
-        Height="600" Width="450"
-        MinHeight="600" MinWidth="450"
-        MaxHeight="600" MaxWidth="450"
-        WindowStartupLocation="CenterScreen">
+        Height="500" Width="900"
+        MinHeight="600" MinWidth="900"
+        MaxHeight="600" MaxWidth="900"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
@@ -39,36 +43,66 @@
         </Grid.RowDefinitions>
         <Image Grid.Row="1" Grid.Column="1"
                Style="{DynamicResource ImageLogoStyle}"/>
-        <Label Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"
+        <Label Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="7"
                Content="Добавить"
                Style="{DynamicResource LabelLogoStyle}"/>
-        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+
+
+        <Label Grid.Row="3" Grid.Column="1"
                Content="ЖК"
                Style="{DynamicResource LabelNormalStyle}"/>
-        <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-               Content="Улица"
+        <ComboBox x:Name="HousingComplexCB"
+                  Grid.Row="3" Grid.Column="3"/>
+
+        <Label Grid.Row="5" Grid.Column="1"
+               Content="Город"
                Style="{DynamicResource LabelNormalStyle}"/>
-        <Label Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-               Content="Номер дома"
-               Style="{DynamicResource LabelNormalStyle}"/>
-        <Label Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+        <ComboBox x:Name="CityCB"
+                  Grid.Row="5" Grid.Column="3"/>
+
+        <Label Grid.Row="7" Grid.Column="1"
                Content="Статус"
                Style="{DynamicResource LabelNormalStyle}"/>
-        <Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2"
-               Content="Статус продажи"
+        <ComboBox x:Name="StatusCB"
+                  Grid.Row="7" Grid.Column="3"/>
+
+        <Label Grid.Row="9" Grid.Column="1"
+               Content="Улица"
                Style="{DynamicResource LabelNormalStyle}"/>
+        <ComboBox x:Name="StreetCB"
+                  Grid.Row="9" Grid.Column="3"/>
 
-        <TextBox x:Name="HouseComplexTB"
-            Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="StreetTB"
-            Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="NumberHouseTB"
-            Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <Label Grid.Row="3" Grid.Column="5"
+               Content="Номер дома"
+               Style="{DynamicResource LabelNormalStyle}"/>
+        <TextBox x:Name="HouseNumberTB"
+                 Grid.Row="3" Grid.Column="7"/>
 
-        <ComboBox x:Name="StatusConstrCB" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="3"/>
-        <ComboBox x:Name="StatusSaleCB" Grid.Row="11" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <Label Grid.Row="5" Grid.Column="5"
+               Content="Стройка дома"
+               Style="{DynamicResource LabelNormalStyle}"/>
+        <TextBox x:Name="CostHouseTB"
+                 Grid.Row="5" Grid.Column="7"/>
+
+        <Label Grid.Row="7" Grid.Column="5"
+               Content="Доп. стоимость(???)"
+               Style="{DynamicResource LabelNormalStyle}"/>
+        <TextBox x:Name="AdditionalTB"
+                 Grid.Row="7" Grid.Column="7"/>
+
+        <Label Grid.Row="9" Grid.Column="5"
+               Content="Добавочная стоимость"
+               Style="{DynamicResource LabelNormalStyle}"/>
+        <TextBox x:Name="AddedValueTB"
+                 Grid.Row="9" Grid.Column="7"/>
+
+        <Label Grid.Row="11" Grid.Column="3"
+               Content="Доп. Затраты"
+               Style="{DynamicResource LabelNormalStyle}"/>
+        <TextBox x:Name="BuildingCostTB"
+                 Grid.Row="11" Grid.Column="5"/>
 
         <Button x:Name="RedactBtn" Content="Добавить"
-                Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="5"/>
+                Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="5" Click="RedactBtn_Click"/>
     </Grid>
 </Window>

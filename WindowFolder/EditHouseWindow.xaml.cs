@@ -21,30 +21,81 @@ namespace WPFAllBayramov.WindowFolder
     /// </summary>
     public partial class EditHouseWindow : Window
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=K218PC\SQLEXPRESS;
-                        Initial Catalog=HousingDemoLightBayramov;
-                        Integrated Security=True");
+        SqlConnection sqlConnection = new SqlConnection(GlobalClass.sqlConnection);
         SqlCommand sqlCommand;
         SqlDataReader dataReader;
-        CBClass cBClass;
+        CBClass CBClass;
+
         public EditHouseWindow()
         {
             InitializeComponent();
-            cBClass = new CBClass();
+            CBClass = new CBClass();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cBClass.CBLoading(StatusSaleCB,CBClass.CBchoose.StatusSale);
-            cBClass.CBLoading(StatusConstrCB,CBClass.CBchoose.StatusCunstruction);
-            cBClass.CBLoading(HouseComplexCB, CBClass.CBchoose.HousingComplex);
-            cBClass.CBLoading(StreetCB,CBClass.CBchoose.Street);
-            cBClass.CBLoading(NumberHouseCB,CBClass.CBchoose.NumberHouse);
+            CBClass.CBLoad(HousingComplexCB, "NameHousingComplex", "IdNameHousingComplex", "NameHousingComplex");
+            CBClass.CBLoad(CityCB, "City", "IdCity", "CityName");
+            CBClass.CBLoad(StatusCB, "StatusConstructionHousingComple",
+                "IdStatusConstructionHousingComplex",
+                "StatusConstructionHousingComplex");
+            CBClass.CBLoad(StreetCB, "Street", "IdStreet", "NameStreet");
+            /*==================*/
+            try
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("SELECT * FROM dbo.HousesInComplexes " +
+                    $"WHERE IdHousesInComplexes= '{VariableClass.HouseId}'", sqlConnection);
+                dataReader = sqlCommand.ExecuteReader();
+                dataReader.Read();
+                StreetCB.SelectedValue = dataReader[1].ToString();
+                HouseNumberTB.Text = dataReader[2].ToString();
+                CostHouseTB.Text = dataReader[3].ToString();
+                AdditionalTB.Text = dataReader[4].ToString();
+                HousingComplexCB.SelectedValue = dataReader[5].ToString();
+                CityCB.SelectedValue = dataReader[6].ToString();
+                StatusCB.SelectedValue = dataReader[7].ToString();
+                AddedValueTB.Text = dataReader[8].ToString();
+                BuildingCostTB.Text = dataReader[9].ToString();
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
 
         private void RedactBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("UPDATE " +
+                    "dbo.HousesInComplexes " +
+                    $"SET [IdStreet] = '{StreetCB.SelectedValue.ToString()}', " +
+                    $"[NumberHouse] = '{HouseNumberTB.Text}'," +
+                    $"[CostHouseConstruction] = '{int.Parse(CostHouseTB.Text)}'," +
+                    $"[AdditionalCostApartamentHouse] = '{int.Parse(AdditionalTB.Text)}'," +
+                    $"[IdNameHousingComplex] = '{int.Parse(HousingComplexCB.SelectedValue.ToString())}'," +
+                    $"[IdStatusConstructionHousingComplex] = '{int.Parse(StatusCB.SelectedValue.ToString())}'," +
+                    $"[AddedValue] = '{int.Parse(AddedValueTB.Text)}'," +
+                    $"[BuildingCosts] = '{int.Parse(BuildingCostTB.Text)}' " +
+                    $"WHERE IdHousesInComplexes = '{VariableClass.HouseId}'", sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+
+                MBClass.InfoMB("Данные упешно отредактированы");
+            }
+            catch (Exception ex)
+            {
+                MBClass.ErrorMB(ex);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
     }
 }

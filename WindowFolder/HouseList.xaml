@@ -56,6 +56,8 @@
         <!--DataGrid-->
         <DataGrid x:Name="ListHousingDG"
                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="7"
+                  IsReadOnly="True"
+                  Margin="0"
                   AutoGenerateColumns="False">
             <DataGrid.ContextMenu>
                 <ContextMenu>
@@ -66,21 +68,21 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
             <DataGrid.Columns>
+                <DataGridTextColumn Header="№п/п"
+                                    Binding="{Binding IdHousesInComplexes}"
+                                    Width="70"/>
                 <DataGridTextColumn Header="ЖК"
-                                    Binding="{Binding Name_Housing_Complex}"
+                                    Binding="{Binding NameHousingComplex}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Улица"
-                                    Binding="{Binding Street}"
+                                    Binding="{Binding NameStreet}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Номер дома"
-                                    Binding="{Binding Number_House}"
+                                    Binding="{Binding NumberHouse}"
                                     Width="*"/>
                 <DataGridTextColumn Header="Статус"
-                                    Binding="{Binding Status_Construction_Housing_Complex}"
+                                    Binding="{Binding StatusConstructionHousingComplex}"
                                     Width="*"/>
-                <DataGridTextColumn Header="Статус продажи"
-                                    Binding="{Binding Status_Sale}"
-                                    Width="250"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

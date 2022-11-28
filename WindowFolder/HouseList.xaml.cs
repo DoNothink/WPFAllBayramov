@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,77 +21,115 @@ namespace WPFAllBayramov.WindowFolder
     /// </summary>
     public partial class HouseList : Window
     {
+        SqlConnection sqlConnection = new SqlConnection(GlobalClass.sqlConnection);
+        SqlCommand sqlCommand;
         DGClass dgClass;
+
         public HouseList()
         {
             InitializeComponent();
             dgClass = new DGClass(ListHousingDG);
         }
 
+        /// <summary>
+        /// ЛОАДЕД))) РАБОТАЕТ
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dgClass.LoadDG("Select Name_Housing_Complex," +
-                " Street," +
-                " Number_House," +
-                "Status_Construction_Housing_Complex," +
-                "Status_Sale" +
-                " From dbo.apartments_in_houses," +
-                "dbo.houses_in_complexes");
+            LoadHouseList();
         }
+
         private void RedactMI_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (ListHousingDG.SelectedItem == null)
             {
-                new EditHouseWindow().Show();
+                MBClass.ErrorMB("Вы не выбрали строку!!!");
             }
-            catch (Exception ex)
+            else
             {
-
-                MBClass.ErrorMB(ex.Message);
+                try
+                {
+                    VariableClass.HouseId = dgClass.SelectId();
+                    new EditHouseWindow().ShowDialog();
+                    LoadHouseList();
+                }
+                catch (Exception ex)
+                {
+                    MBClass.ErrorMB(ex);
+                }
             }
         }
 
+        /// <summary>
+        /// воркает
+        /// </summary>
         private void DeleteMI_Click(object sender, RoutedEventArgs e)
         {
-            try
+            bool resultMB = MBClass.QuestionMB("Вы действительно " +
+                "хотите удалить дом?..");
+            if (resultMB == true)
             {
-                VariableClass.HouseId = dgClass.SelectId();
+
+
+                if (ListHousingDG.SelectedItem == null)
+                {
+                    MBClass.ErrorMB("Вы не выбрали строку!!!");
+                }
+                else
+                {
+                    try
+                    {
+                        sqlConnection.Open();
+                        VariableClass.HouseId = dgClass.SelectId();
+                        sqlCommand = new SqlCommand("DELETE FROM dbo.[HousesInComplexes]" +
+                            $"WHERE IdHousesInComplexes={VariableClass.HouseId}",sqlConnection);
+                        sqlCommand.ExecuteNonQuery();
+
+                        MBClass.InfoMB("Дома больше нет. Зря строили.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MBClass.ErrorMB(ex);
+                    }
+                    finally
+                    {
+                        sqlConnection.Close();
+                        LoadHouseList();
+                    }
+                }
             }
-            catch(Exception ex)
-            {
-                MBClass.ErrorMB(ex.Message);
-            }
-        }
-        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            dgClass.LoadDG("Select Name_Housing_Complex," +
-                " Street," +
-                " Number_House," +
-                "Status_Construction_Housing_Complex," +
-                "Status_Sale" +
-                " From dbo.apartments_in_houses," +
-                "dbo.houses_in_complexes " +
-                $"WHERE Name_Housing_Complex Like '%{SearchTB.Text}%' " +
-                $"OR Street Like '%{SearchTB.Text}%' " +
-                $"OR Number_House Like '%{SearchTB.Text}%'");
         }
 
+        /// <summary>
+        /// ПОИСК РАБОТАЕТ
+        /// </summary>
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            dgClass.LoadDG("SELECT * FROM dbo.[HousesView] " +
+                $"WHERE NameHousingComplex LIKE '%{SearchTB.Text}%' " +
+                $"OR NameStreet LIKE '%{SearchTB.Text}%' " +
+                $"OR NumberHouse LIKE '%{SearchTB.Text}%'");
+        }
+
+        /// <summary>
+        /// РАБОТАЕТ
+        /// </summary>
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             MBClass.ExitMB();
         }
 
+        /// <summary>
+        /// РАБОТАЕТ
+        /// </summary>
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
                 new AddHouseWindow().Show();
-            }
-            catch (Exception ex)
-            {
+        }
 
-                MBClass.ErrorMB(ex.Message);
-            }
+        private void LoadHouseList()
+        {
+            dgClass.LoadDG("SELECT * FROM dbo.[HousesView]");
         }
     }
 }
